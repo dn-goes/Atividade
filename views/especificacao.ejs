@@ -1,0 +1,137 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+    /* Estilo geral */
+    body {
+        background: linear-gradient(135deg, #f4f4f9, #d9e4f5); /* Gradiente de fundo suave */
+        font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
+        color: #333;
+    }
+    
+    .container {
+        margin-top: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ff7f50; /* Laranja vibrante */
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    /* Estilo dos cards */
+    .cards {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .cards:hover {
+        transform: translateY(-5px);
+        box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .cards-body p {
+        margin: 8px 0;
+        font-size: 17px;
+        color: #444;
+    }
+
+    .cards-body h2 {
+        color: #0077b6;
+        font-weight: bold;
+    }
+
+    .cards-body img {
+        width: 100%;
+        max-width: 220px;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        padding: 5px;
+        background: #fff;
+    }
+
+    /* Rodapé do card */
+    .card-footer {
+        margin-top: 15px;
+    }
+
+    /* Botões estilizados */
+    .btn-primary {
+        background-color: #0077b6;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+        text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+        background-color: #ff7f50;
+        transform: scale(1.05);
+    }
+
+    .btn-secondary {
+        background-color: #555;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+        text-transform: uppercase;
+    }
+
+    .btn-secondary:hover {
+        background-color: #333;
+        transform: scale(1.05);
+    }
+
+    /* Efeito no botão geral */
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+</style>
+
+<body>
+    <%- include("partials/navbar.ejs") %>
+
+    <div class="container">
+        <hr>
+        <h1>🛍 Produtos da Loja</h1>
+        <hr>
+
+        <div class="btn-container">
+            <a href="/produtos" class="btn btn-secondary">Cadastrar os Produtos</a>
+            <a href="/especificacao" class="btn btn-secondary">Ver os Produtos Gerais</a>
+        </div>
+
+        <% produtos.forEach(function(p) { %>
+            <div class="cards">
+                <div class="cards-body">
+                    <img src="<%= p.imagem %>" alt="<%= p.nome %>">
+                    <h2> <%= p.nome %> </h2>
+                    <p><strong>Descrição:</strong> <%= p.descricao %></p>
+                    <p><strong>Preço:</strong>  <%= p.preco %></p>
+                </div>
+
+                <div class="card-footer">
+                    <a href="/produto/<%= p.id %>">
+                        <button class="btn btn-primary">Ver Produto</button>
+                    </a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</body>
+
+<%- include("partials/footer.ejs") %>

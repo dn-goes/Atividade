@@ -1,0 +1,16 @@
+<%- include ("partials/header.ejs") %>
+<body>
+    <%- include ("partials/navbar.ejs") %>
+    <% comentarios.forEach(function(p) { %>
+        <div class="cards">
+            <div class="cards-body">
+                <img src="<%= p.imagem %>" alt="<%= p.nome %>">
+                <h2> <%= p.nome %> </h2>
+                <p><strong>Descrição:</strong> <%= p.descricao %></p>
+                <p><strong>Preço:</strong>  <%= p.preco %></p>
+            </div>
+
+        </div>
+    <% }); %>
+</body>
+<%- include ("partials/footer.ejs") %>
